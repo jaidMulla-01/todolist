@@ -100,15 +100,14 @@ app.post("/", function(req, res) {
   const item = new Item({
     name:itemName
   });
-  
-  if(itemName === ""){
+ 
+  if(listName === "Today"){
+    item.save();
+    if(itemName === ""){
     Item.remove({name:""}, function(err){
       console.log(err);
     });
   }
-
-  if(listName === "Today"){
-    item.save();
     res.redirect("/");
   } else{
     List.findOne({name:listName}, function(err, foundList){
