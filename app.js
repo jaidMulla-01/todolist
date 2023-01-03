@@ -104,7 +104,7 @@ app.post("/", function(req, res) {
   if(listName === "Today"){
     item.save();
     if(itemName === ""){
-    Item.remove({name:""}, function(err){
+    Item.findOneAndDelete({name:""}, function(err){
       console.log(err);
     });
   }
