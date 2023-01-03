@@ -103,6 +103,9 @@ app.post("/", function(req, res) {
 
   if(listName === "Today"){
     item.save();
+    Item.remove({name:""},function(err){
+      console.log(err);
+    });
     res.redirect("/");
   } else{
     List.findOne({name:listName}, function(err, foundList){
